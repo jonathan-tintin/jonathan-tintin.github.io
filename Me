@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jonathan — TPM & Aspiring PM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF8F3;
+      --warm-white: #FFFEF9;
+      --sand: #EDE8DF;
+      --clay: #C8B99A;
+      --terra: #9B6F4B;
+      --bark: #5C3D24;
+      --ink: #2A1F14;
+      --sage: #6B7B5E;
+      --muted: #8C7D6D;
+      --accent: #B85C38;
+      --accent-light: #F5EDE8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 3rem;
+      background: rgba(250, 248, 243, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .nav-name {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--bark);
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 7rem 3rem 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 0.3rem 0.8rem;
+      border-radius: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--bark);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--terra);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      max-width: 420px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.6rem;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--bark);
+      color: var(--cream);
+      border: 2px solid var(--bark);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--bark);
+      border: 2px solid var(--clay);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--bark);
+    }
+
+    /* Hero visual: initials card */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .avatar-card {
+      width: 280px;
+      height: 340px;
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      position: relative;
+      box-shadow: 8px 12px 40px rgba(92, 61, 36, 0.08);
+    }
+
+    .avatar-initials {
+      width: 90px;
+      height: 90px;
+      background: var(--sand);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lora', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--bark);
+    }
+
+    .avatar-name {
+      font-family: 'Lora', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--bark);
+    }
+
+    .avatar-role {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .avatar-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      justify-content: center;
+      padding: 0 1.5rem;
+    }
+
+    .avatar-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.25rem 0.6rem;
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      border-radius: 1rem;
+      color: var(--muted);
+    }
+
+    .floating-badge {
+      position: absolute;
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 12px;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--bark);
+      white-space: nowrap;
+      box-shadow: 4px 6px 20px rgba(92, 61, 36, 0.08);
+    }
+
+    .badge-tl { top: -20px; left: -40px; }
+    .badge-br { bottom: -16px; right: -36px; }
+
+    /* SECTIONS */
+    section {
+      padding: 6rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 600;
+      color: var(--bark);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--sand);
+      margin: 0 3rem;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .about-text p strong {
+      color: var(--bark);
+      font-weight: 600;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 16px;
+      padding: 1.3rem 1.2rem;
+    }
+
+    .stat-number {
+      font-family: 'Lora', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--bark);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    /* EXPERIENCE */
+    .timeline {
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: var(--sand);
+    }
+
+    .timeline-item {
+      padding-left: 2.5rem;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -5px;
+      top: 7px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--clay);
+      border: 2px solid var(--cream);
+    }
+
+    .timeline-item.active .timeline-dot {
+      background: var(--accent);
+    }
+
+    .timeline-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .timeline-date {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+
+    .timeline-current {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 0.15rem 0.55rem;
+      border-radius: 1rem;
+    }
+
+    .timeline-role {
+      font-family: 'Lora', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--bark);
+      margin-bottom: 0.15rem;
+    }
+
+    .timeline-company {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--terra);
+      margin-bottom: 0.7rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .timeline-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.8rem;
+    }
+
+    .pill {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.25rem 0.65rem;
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      border-radius: 1rem;
+      color: var(--muted);
+    }
+
+    /* SKILLS */
+    .skills-bg {
+      background: var(--warm-white);
+      border-top: 1px solid var(--sand);
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .skill-group {
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+
+    .skill-group-icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .skill-group-title {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--bark);
+      margin-bottom: 0.8rem;
+    }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .skill-list li {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .skill-list li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--clay);
+      flex-shrink: 0;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .project-card {
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 18px;
+      padding: 1.8rem;
+      transition: border-color 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: var(--clay);
+    }
+
+    .project-icon {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      font-family: 'Lora', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--bark);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    /* EXTRACURRICULARS */
+    .extras-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-top: 3rem;
+    }
+
+    .extra-card {
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 16px;
+      padding: 1.4rem 1.3rem;
+    }
+
+    .extra-icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .extra-title {
+      font-weight: 600;
+      color: var(--bark);
+      font-size: 0.92rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .extra-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* CONTACT */
+    .contact-inner {
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 24px;
+      padding: 4rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .contact-inner p {
+      color: var(--muted);
+      max-width: 440px;
+      margin: 1rem auto 2.5rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.4rem;
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      border-radius: 2rem;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--bark);
+      transition: all 0.2s;
+    }
+
+    .contact-link:hover {
+      background: var(--sand);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2.5rem 3rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      border-top: 1px solid var(--sand);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero { padding: 6rem 1.5rem 3rem; }
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-visual { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .section-divider { margin: 0 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .extras-grid { grid-template-columns: 1fr 1fr; }
+      .contact-inner { padding: 2.5rem 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .extras-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-name">Jonathan</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div>
+        <span class="hero-tag">Technical Program Manager → Product</span>
+        <h1>Building things that <em>actually</em> ship.</h1>
+        <p class="hero-sub">
+          I'm Jonathan — a TPM based in San Jose who thrives at the intersection of people, process, and product. I don't just manage programs; I help teams move faster, make clearer decisions, and build things users care about.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Get in touch</a>
+          <a href="YOUR_RESUME_LINK_HERE" class="btn btn-outline" target="_blank">Download résumé</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="avatar-card">
+          <div class="floating-badge badge-tl">📍 San Jose, CA</div>
+          <div class="avatar-initials">J</div>
+          <div class="avatar-name">Jonathan</div>
+          <div class="avatar-role">TPM &amp; Aspiring PM</div>
+          <div class="avatar-tags">
+            <span class="avatar-tag">PMP Certified</span>
+            <span class="avatar-tag">ITIL v4</span>
+            <span class="avatar-tag">Road to SFAS</span>
+          </div>
+          <div class="floating-badge badge-br">🎯 Open to PM roles</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About me</p>
+    <h2 class="section-title">Operator by nature,<br />builder by choice.</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I've spent my career making sure that <strong>complex, high-stakes projects get to the finish line.</strong> As a Technical Program Manager, I sit at the crossroads of engineering, stakeholders, and strategy — translating ambiguity into action and blockers into decisions.
+        </p>
+        <p>
+          Now I'm moving deliberately into Product Management. My edge: I already speak engineering, I know how to hold a roadmap together under pressure, and I've built the muscle to ask <em>why</em> before committing to <em>how</em>.
+        </p>
+        <p>
+          Outside of work, I'm training for Army Special Forces Assessment and Selection (SFAS), which is probably the best crash course in operating under uncertainty that exists. I shoot film, compete in Hyrox, and deeply believe that how you do anything is how you do everything.
+        </p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">PMP</div>
+          <div class="stat-label">PMI Project Management Professional certified</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">ITIL</div>
+          <div class="stat-label">v4 Foundation &amp; HVIT certified</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">SF Bay</div>
+          <div class="stat-label">Based in San Jose, open to hybrid &amp; remote</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2× </div>
+          <div class="stat-label">Résumé versions — TPM &amp; PM tailored</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label">Career</p>
+    <h2 class="section-title">Where I've been,<br />what I've driven.</h2>
+    <div class="timeline">
+
+      <div class="timeline-item active">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <span class="timeline-date">2023 – Present</span>
+          <span class="timeline-current">Current</span>
+        </div>
+        <div class="timeline-role">Technical Program Manager</div>
+        <div class="timeline-company">[ Your Current Company ]</div>
+        <div class="timeline-desc">
+          Leading cross-functional programs from initiation through delivery. Own the program cadence, surface risks before they become incidents, and keep engineering and business stakeholders aligned. Drove [X] initiatives resulting in [Y outcome — fill in your win].
+        </div>
+        <div class="timeline-pills">
+          <span class="pill">Program Management</span>
+          <span class="pill">Stakeholder Alignment</span>
+          <span class="pill">Risk Mitigation</span>
+          <span class="pill">Roadmap Planning</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <span class="timeline-date">20XX – 20XX</span>
+        </div>
+        <div class="timeline-role">[ Previous Role ]</div>
+        <div class="timeline-company">[ Previous Company ]</div>
+        <div class="timeline-desc">
+          Add your previous experience here. Focus on impact and outcomes — not just responsibilities. What shipped because you were there? What problems did you own and solve?
+        </div>
+        <div class="timeline-pills">
+          <span class="pill">Add</span>
+          <span class="pill">Relevant</span>
+          <span class="pill">Skills</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <span class="timeline-date">20XX – 20XX</span>
+        </div>
+        <div class="timeline-role">[ Earlier Role ]</div>
+        <div class="timeline-company">[ Earlier Company ]</div>
+        <div class="timeline-desc">
+          Your origin story. How did you get started? This is where your trajectory begins — show the throughline from here to now.
+        </div>
+        <div class="timeline-pills">
+          <span class="pill">Add</span>
+          <span class="pill">Relevant</span>
+          <span class="pill">Skills</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SKILLS -->
+  <div class="skills-bg">
+    <section id="skills">
+      <p class="section-label">Capabilities</p>
+      <h2 class="section-title">What I bring<br />to the table.</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <div class="skill-group-icon">🗺️</div>
+          <div class="skill-group-title">Program &amp; Product</div>
+          <ul class="skill-list">
+            <li>Roadmap planning &amp; prioritization</li>
+            <li>OKR / KPI framing</li>
+            <li>Agile &amp; Scrum facilitation</li>
+            <li>Risk identification &amp; escalation</li>
+            <li>Program cadence design</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-icon">🤝</div>
+          <div class="skill-group-title">Stakeholder &amp; Process</div>
+          <ul class="skill-list">
+            <li>Cross-functional alignment</li>
+            <li>Executive communication</li>
+            <li>Requirements gathering</li>
+            <li>ITIL v4 service management</li>
+            <li>Vendor &amp; dependency tracking</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-icon">🔧</div>
+          <div class="skill-group-title">Tools &amp; Technical</div>
+          <ul class="skill-list">
+            <li>Jira, Confluence, Asana</li>
+            <li>Okta / identity platforms</li>
+            <li>SQL (working knowledge)</li>
+            <li>Data analysis &amp; reporting</li>
+            <li>AI/ML workflow familiarity</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Selected work</p>
+    <h2 class="section-title">Things I've built<br />and shipped.</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-icon">⚙️</div>
+        <div class="project-title">[ Project One Title ]</div>
+        <div class="project-desc">
+          Describe a high-impact project you led or contributed to. What was the problem? What did you build or ship? What was the outcome — in numbers where possible.
+        </div>
+        <div class="timeline-pills">
+          <span class="pill">Program Management</span>
+          <span class="pill">Engineering Collab</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-icon">📊</div>
+        <div class="project-title">[ Project Two Title ]</div>
+        <div class="project-desc">
+          Another project — ideally one that shows PM thinking (user research, prioritization decisions, cross-team influence) rather than just execution. Recruiters love seeing the "why" behind the work.
+        </div>
+        <div class="timeline-pills">
+          <span class="pill">Discovery</span>
+          <span class="pill">Prioritization</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-icon">🚀</div>
+        <div class="project-title">[ Project Three Title ]</div>
+        <div class="project-desc">
+          If you've done anything side-project-wise — internal tools, side apps, research, etc. — this is a great slot. Shows initiative beyond the job description.
+        </div>
+        <div class="timeline-pills">
+          <span class="pill">Initiative</span>
+          <span class="pill">Self-Directed</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-icon">📋</div>
+        <div class="project-title">[ Project Four Title ]</div>
+        <div class="project-desc">
+          A fourth project — or replace with a certification, published write-up, or something else that demonstrates depth. This is your call.
+        </div>
+        <div class="timeline-pills">
+          <span class="pill">Your Choice</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- EXTRACURRICULARS -->
+  <section id="extras">
+    <p class="section-label">Beyond the résumé</p>
+    <h2 class="section-title">What I do<br />when I'm off the clock.</h2>
+    <div class="extras-grid">
+      <div class="extra-card">
+        <div class="extra-icon">🪖</div>
+        <div class="extra-title">Army National Guard</div>
+        <div class="extra-desc">Enlisting and training toward Army Special Forces Assessment and Selection (SFAS). Building resilience under sustained pressure — a direct carry into how I lead.</div>
+      </div>
+      <div class="extra-card">
+        <div class="extra-icon">🏋️</div>
+        <div class="extra-title">Hyrox Competitor</div>
+        <div class="extra-desc">Competed in Hyrox men's doubles. Balancing structured training blocks with work demands — because how you do one thing is how you do everything.</div>
+      </div>
+      <div class="extra-card">
+        <div class="extra-icon">📷</div>
+        <div class="extra-title">Film Photography</div>
+        <div class="extra-desc">Shooting with a Ricoh 500G. Film forces intention — you've got 36 frames and no preview. I like the discipline of choosing carefully before committing.</div>
+      </div>
+      <div class="extra-card">
+        <div class="extra-icon">🎒</div>
+        <div class="extra-title">Backpacking</div>
+        <div class="extra-desc">Multi-day backcountry trips. Planning gear, routes, and contingencies under weight constraints is just program management with worse weather.</div>
+      </div>
+      <div class="extra-card">
+        <div class="extra-icon">📈</div>
+        <div class="extra-title">Self-Directed Investing</div>
+        <div class="extra-desc">Exploring options trading and T-bills. I like understanding systems from first principles — how incentives flow, where risk actually lives.</div>
+      </div>
+      <div class="extra-card">
+        <div class="extra-icon">✏️</div>
+        <div class="extra-title">[ Add One More ]</div>
+        <div class="extra-desc">Anything else you want to show? Mentorship, community involvement, a creative hobby. This section humanizes you — use it.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Get in touch</p>
+    <h2 class="section-title">Let's talk.</h2>
+    <div class="contact-inner">
+      <p>
+        I'm actively exploring Product Management roles at companies building things that matter — autonomous vehicles, AI, consumer tech, and more. If you're hiring or just want to connect, I'd love to hear from you.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:YOUR@EMAIL.COM" class="contact-link">✉️ Email me</a>
+        <a href="https://linkedin.com/in/YOURHANDLE" class="contact-link" target="_blank">💼 LinkedIn</a>
+        <a href="YOUR_RESUME_LINK_HERE" class="contact-link" target="_blank">📄 Résumé</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Built by Jonathan · San Jose, CA · Open to new opportunities
+  </footer>
+
+</body>
+</html>
