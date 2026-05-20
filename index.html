@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jonathan — Product Manager</title>
+  <title>Jonathan</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -33,6 +33,7 @@
       font-size: 16px;
     }
 
+    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -51,7 +52,6 @@
       font-size: 1.1rem;
       font-weight: 600;
       color: var(--bark);
-      letter-spacing: -0.01em;
       text-decoration: none;
     }
 
@@ -63,7 +63,7 @@
     }
 
     .nav-links a {
-      font-size: 0.85rem;
+      font-size: 0.83rem;
       font-weight: 500;
       color: var(--muted);
       text-decoration: none;
@@ -83,85 +83,26 @@
       border-radius: 2rem;
       letter-spacing: 0.03em !important;
       text-transform: none !important;
+      transition: background 0.2s;
     }
 
-    .nav-pill:hover { background: var(--accent); color: var(--cream) !important; }
+    .nav-pill:hover { background: var(--accent) !important; }
 
-    .hero {
-      padding: 9rem 3rem 5rem;
-      max-width: 820px;
-      margin: 0 auto;
-    }
-
-    .hero-tag {
-      display: inline-block;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      background: var(--accent-light);
-      padding: 0.3rem 0.8rem;
-      border-radius: 2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero h1 {
-      font-family: 'Lora', serif;
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
-      font-weight: 600;
-      line-height: 1.18;
-      color: var(--bark);
-      margin-bottom: 1.4rem;
-      letter-spacing: -0.02em;
-    }
-
-    .hero h1 em { font-style: italic; color: var(--terra); }
-
-    .hero-sub {
-      font-size: 1.05rem;
-      color: var(--muted);
-      line-height: 1.8;
-      max-width: 600px;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-meta {
-      display: flex;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-    }
-
-    .meta-item { display: flex; flex-direction: column; gap: 0.15rem; }
-
-    .meta-label {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--clay);
-    }
-
-    .meta-value {
-      font-size: 0.92rem;
-      font-weight: 500;
-      color: var(--bark);
-    }
-
+    /* ── SHARED LAYOUT ── */
     .section-divider {
       border: none;
       border-top: 1px solid var(--sand);
       margin: 0 3rem;
     }
 
-    section {
-      padding: 5rem 3rem;
-      max-width: 820px;
+    .container {
+      max-width: 780px;
       margin: 0 auto;
+      padding: 5rem 3rem;
     }
 
     .section-label {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -175,60 +116,198 @@
       font-weight: 600;
       color: var(--bark);
       line-height: 1.2;
-      margin-bottom: 1.8rem;
       letter-spacing: -0.02em;
+      margin-bottom: 1.8rem;
     }
 
-    .role-block {
-      background: var(--warm-white);
-      border: 1px solid var(--sand);
-      border-radius: 20px;
-      padding: 2rem 2.2rem;
+    .section-title em { font-style: italic; color: var(--terra); }
+
+    /* ── HERO / INTRO ── */
+    .hero {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 9rem 3rem 5rem;
     }
 
-    .role-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 1.2rem;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .role-title {
+    .hero-name {
       font-family: 'Lora', serif;
-      font-size: 1.25rem;
+      font-size: clamp(2.6rem, 5vw, 3.8rem);
       font-weight: 600;
       color: var(--bark);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.4rem;
     }
 
-    .role-company {
-      font-size: 0.88rem;
+    .hero-name em { font-style: italic; color: var(--terra); }
+
+    .hero-location {
+      font-size: 0.82rem;
       font-weight: 500;
-      color: var(--terra);
-      margin-top: 0.15rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 2.2rem;
     }
 
-    .role-date {
-      font-size: 0.78rem;
-      font-weight: 500;
+    /* ── HERO PHOTO ── */
+    .hero-photo-wrap {
+      margin: 1.8rem 0 2rem;
+    }
+
+    .hero-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--sand);
+      background: var(--sand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .hero-photo:hover { border-color: var(--clay); }
+
+    .hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-photo input[type="file"] {
+      position: absolute; inset: 0;
+      opacity: 0; cursor: pointer;
+      width: 100%; height: 100%;
+    }
+
+    .hero-photo-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      pointer-events: none;
+    }
+
+    .hero-photo-placeholder span:first-child {
+      font-size: 2rem;
+      opacity: 0.25;
+    }
+
+    .hero-photo-placeholder span:last-child {
+      font-size: 0.62rem;
       color: var(--muted);
-      background: var(--cream);
-      border: 1px solid var(--sand);
-      padding: 0.3rem 0.8rem;
-      border-radius: 2rem;
-      white-space: nowrap;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
-    .role-body {
-      font-size: 0.95rem;
+    .hero-bio {
+      font-size: 1.08rem;
+      color: var(--muted);
+      line-height: 1.85;
+      max-width: 640px;
+    }
+
+    .hero-bio p { margin-bottom: 1.1rem; }
+    .hero-bio p:last-child { margin-bottom: 0; }
+    .hero-bio strong { color: var(--bark); font-weight: 600; }
+
+    /* ── PROJECT CARDS ── */
+    .project-block {
+      margin-bottom: 4rem;
+    }
+
+    .project-block:last-child { margin-bottom: 0; }
+
+    .project-label-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-num {
+      font-family: 'Lora', serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--clay);
+      letter-spacing: 0.04em;
+    }
+
+    .project-name {
+      font-family: 'Lora', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--bark);
+      letter-spacing: -0.01em;
+    }
+
+    .project-desc {
+      font-size: 0.93rem;
       color: var(--muted);
       line-height: 1.8;
+      margin-bottom: 1.4rem;
+      max-width: 620px;
     }
 
-    .role-body p { margin-bottom: 0.9rem; }
-    .role-body p:last-child { margin-bottom: 0; }
-    .role-body strong { color: var(--bark); font-weight: 600; }
+    .project-desc strong { color: var(--bark); font-weight: 600; }
+
+    /* 2-up photo grid */
+    .photo-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .photo-slot {
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--sand);
+      aspect-ratio: 4/3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      position: relative;
+      cursor: pointer;
+      border: 1.5px dashed var(--clay);
+      transition: background 0.15s;
+    }
+
+    .photo-slot:hover { background: var(--accent-light); }
+
+    .photo-slot img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-slot input[type="file"] {
+      position: absolute; inset: 0;
+      opacity: 0; cursor: pointer;
+      width: 100%; height: 100%;
+    }
+
+    .upload-icon { font-size: 1.3rem; opacity: 0.35; pointer-events: none; }
+
+    .upload-label {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-align: center;
+      padding: 0 1rem;
+      pointer-events: none;
+    }
+
+    .photo-note {
+      font-size: 0.72rem;
+      color: var(--clay);
+      font-style: italic;
+      margin-top: 0.6rem;
+    }
 
     .pills {
       display: flex;
@@ -241,199 +320,129 @@
       font-size: 0.72rem;
       font-weight: 500;
       padding: 0.25rem 0.65rem;
-      background: var(--cream);
+      background: var(--warm-white);
       border: 1px solid var(--sand);
       border-radius: 1rem;
       color: var(--muted);
     }
 
-    .project-card {
+    /* ── MATH SECTION ── */
+    .math-section {
       background: var(--warm-white);
-      border: 1px solid var(--sand);
-      border-radius: 20px;
-      overflow: hidden;
-      margin-bottom: 3rem;
-    }
-
-    .project-card:last-child { margin-bottom: 0; }
-
-    .project-header {
-      padding: 2rem 2.2rem 1.5rem;
+      border-top: 1px solid var(--sand);
       border-bottom: 1px solid var(--sand);
     }
 
-    .project-tag {
-      display: inline-block;
+    .math-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 5rem 3rem;
+    }
+
+    .math-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 0;
+    }
+
+    .math-body {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .math-body p { margin-bottom: 1rem; }
+    .math-body p:last-child { margin-bottom: 0; }
+    .math-body strong { color: var(--bark); font-weight: 600; }
+
+    .thesis-card {
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      border-radius: 18px;
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .thesis-card-label {
       font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
-      color: var(--terra);
-      background: var(--accent-light);
-      padding: 0.2rem 0.65rem;
-      border-radius: 1rem;
-      margin-bottom: 0.8rem;
+      color: var(--accent);
     }
 
-    .project-title {
+    .thesis-card-title {
       font-family: 'Lora', serif;
-      font-size: 1.4rem;
+      font-size: 1.05rem;
       font-weight: 600;
       color: var(--bark);
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
+      line-height: 1.35;
     }
 
-    .project-subtitle {
-      font-size: 0.9rem;
+    .thesis-card-meta {
+      font-size: 0.82rem;
       color: var(--muted);
       line-height: 1.6;
     }
 
-    /* PHOTO GALLERY */
-    .gallery-wrap {
-      border-top: 1px solid var(--sand);
-      border-bottom: 1px solid var(--sand);
-    }
-
-    .photo-gallery {
-      display: grid;
-      gap: 2px;
-      background: var(--sand);
-    }
-
-    .photo-gallery.two-col { grid-template-columns: 1fr 1fr; }
-    .photo-gallery.three-col { grid-template-columns: 1fr 1fr 1fr; }
-
-    .photo-slot {
-      aspect-ratio: 4/3;
-      background: var(--cream);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      transition: background 0.15s;
-    }
-
-    .photo-slot:hover { background: var(--accent-light); }
-
-    .photo-slot img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .thesis-card-meta span {
       display: block;
     }
 
-    .photo-slot input[type="file"] {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      cursor: pointer;
-      width: 100%;
-      height: 100%;
-    }
-
-    .upload-icon { font-size: 1.4rem; opacity: 0.35; pointer-events: none; }
-
-    .upload-label {
-      font-size: 0.72rem;
-      color: var(--muted);
-      text-align: center;
-      padding: 0 1rem;
-      pointer-events: none;
-    }
-
-    .gallery-note {
-      font-size: 0.75rem;
-      color: var(--clay);
-      text-align: center;
-      padding: 0.6rem;
-      background: var(--cream);
-      border-top: 1px solid var(--sand);
-      font-style: italic;
-    }
-
-    .project-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      border-bottom: 1px solid var(--sand);
-    }
-
-    .project-stat {
-      background: var(--warm-white);
-      padding: 1.2rem 1.5rem;
-      text-align: center;
-      border-right: 1px solid var(--sand);
-    }
-
-    .project-stat:last-child { border-right: none; }
-
-    .project-stat-num {
-      font-family: 'Lora', serif;
-      font-size: 1.5rem;
+    .thesis-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.85rem;
       font-weight: 600;
       color: var(--bark);
-      line-height: 1;
-      margin-bottom: 0.25rem;
+      text-decoration: none;
+      padding: 0.65rem 1.2rem;
+      background: var(--bark);
+      color: var(--cream);
+      border-radius: 2rem;
+      transition: background 0.2s;
+      align-self: flex-start;
+      margin-top: 0.4rem;
     }
 
-    .project-stat-label {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
+    .thesis-link:hover { background: var(--accent); }
 
-    .project-body { padding: 1.8rem 2.2rem 2rem; }
-
-    .project-body p {
-      font-size: 0.95rem;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 0.9rem;
-    }
-
-    .project-body p:last-child { margin-bottom: 0; }
-    .project-body strong { color: var(--bark); font-weight: 600; }
-
-    .contact-bar {
-      background: var(--warm-white);
-      border: 1px solid var(--sand);
-      border-radius: 20px;
-      padding: 2.5rem 2.2rem;
+    /* ── CONTACT ── */
+    .contact-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 2rem;
       flex-wrap: wrap;
-      margin-top: 3rem;
     }
 
-    .contact-bar-text h3 {
+    .contact-text h3 {
       font-family: 'Lora', serif;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 600;
       color: var(--bark);
       margin-bottom: 0.3rem;
     }
 
-    .contact-bar-text p { font-size: 0.9rem; color: var(--muted); }
+    .contact-text p { font-size: 0.9rem; color: var(--muted); }
 
-    .contact-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .contact-links { display: flex; gap: 0.7rem; flex-wrap: wrap; }
 
     .contact-link {
       display: flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.6rem 1.2rem;
-      background: var(--cream);
+      padding: 0.6rem 1.1rem;
+      background: var(--warm-white);
       border: 1px solid var(--sand);
       border-radius: 2rem;
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 500;
       color: var(--bark);
       transition: background 0.2s;
@@ -442,306 +451,180 @@
 
     .contact-link:hover { background: var(--sand); }
 
+    /* ── FOOTER ── */
     footer {
       text-align: center;
       padding: 2.5rem 3rem;
       font-size: 0.82rem;
       color: var(--muted);
       border-top: 1px solid var(--sand);
-      margin-top: 4rem;
     }
 
     footer a { color: var(--terra); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 700px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { gap: 1rem; }
-      .hero { padding: 7rem 1.5rem 3rem; }
-      section { padding: 3.5rem 1.5rem; }
+      .hero, .container, .math-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .hero { padding-top: 7rem; padding-bottom: 3rem; }
+      .container { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+      .math-inner { padding-top: 3.5rem; padding-bottom: 3.5rem; }
       .section-divider { margin: 0 1.5rem; }
-      .photo-gallery.three-col { grid-template-columns: 1fr 1fr; }
-      .project-stats { grid-template-columns: 1fr 1fr; }
-      .project-stat:nth-child(2) { border-right: none; }
-      .project-header, .project-body { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .role-block { padding: 1.5rem; }
-      .contact-bar { flex-direction: column; align-items: flex-start; }
+      .math-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-row { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
 
+  <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-name">Jonathan</a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#role">Work</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#math">Research</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="extracurriculars.html" class="nav-pill">Beyond work →</a></li>
     </ul>
   </nav>
 
+  <!-- ── INTRO ── -->
   <div class="hero">
-    <span class="hero-tag">About me</span>
-    <h1>Hi, I'm Jonathan. <em>Nice to meet you.</em></h1>
-    <p class="hero-sub">
-      [Write 2–3 sentences here introducing yourself as a person — not a professional. Where you grew up, what drives you, what kind of person you are. Keep it warm and genuine, like you're talking to someone at a dinner party.]
-    </p>
+    <div class="hero-name">Jonathan <em>[Last Name]</em></div>
+    <div class="hero-location">
+      <a href="https://linkedin.com/in/YOURHANDLE" target="_blank" style="color: var(--terra); text-decoration: none; font-weight: 600; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">LinkedIn</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:YOUR@EMAIL.COM" style="color: var(--muted); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'">YOUR@EMAIL.COM</a>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo" title="Click to preview a photo">
+        <input type="file" accept="image/*" onchange="loadHeroPhoto(event)" />
+        <div class="hero-photo-placeholder">
+          <span>👤</span>
+          <span>Photo</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-bio">
+      <p>
+        Hey there! I'm currently an IT Program Manager in the Bay Area. I graduated from UC San Diego with a BS in Mathematics and a minor in Philosophy with a concentration in logic. When I'm not working, I love spending time outdoors, whether that's at the beach, on a trail, or in the gym running or lifting weights. San Diego is one of my favorite places to escape to when I need to recharge; it has the perfect balance of great weather and incredible outdoors.
+      </p>
+      <p>
+        As a minority in the tech field, I'm committed to the work of diversity and inclusion, raising awareness, building community, and surrounding myself with people who share that mission. I believe in challenging myself constantly and staying comfortable being uncomfortable. I bring a strong work ethic to every team I join and show up with a simple belief: one team, one fight. Before jumping into industry, I spent two years completing a master's degree in pure mathematics, which taught me how to think rigorously about any problem I come across.
+      </p>
+    </div>
   </div>
 
   <hr class="section-divider" />
 
-  <!-- PERSONAL BIO SECTION -->
-  <section id="about">
+  <!-- ── PROJECTS ── -->
+  <div class="container" id="projects">
+    <p class="section-label">Work</p>
+    <h2 class="section-title">A couple things I built at <em>[Company Name]</em></h2>
 
-    <!-- BACKGROUND BLOCK -->
-    <div class="role-block" style="margin-bottom: 1.5rem;">
-      <div class="role-header">
-        <div>
-          <div class="role-title">Background</div>
-          <div class="role-company">Where I'm from &amp; how I got here</div>
+    <!-- HWOC -->
+    <div class="project-block">
+      <div class="project-label-row">
+        <span class="project-num">01 ·</span>
+        <span class="project-name">HWOC</span>
+      </div>
+      <p class="project-desc">
+        The Hybrid Work Operations Center (HWOC) functions as both a customer showcase and an internal operations center. For customers, we demonstrate how [Company A] uses its own technology in a real working environment, and explore how that same technology could be applied in their own. Internally, the space seats four engineers who proactively monitor [Company A]'s workforce to ensure employees have a great work experience and can perform their best work.
+      </p>
+      <div class="photo-pair">
+        <div class="photo-slot" title="Click to add photo">
+          <input type="file" accept="image/*" onchange="loadImage(event,this)" />
+          <span class="upload-icon">🖼</span>
+          <span class="upload-label">Add a photo</span>
         </div>
-        <span class="role-date">[City, State] born &amp; raised</span>
+        <div class="photo-slot" title="Click to add photo">
+          <input type="file" accept="image/*" onchange="loadImage(event,this)" />
+          <span class="upload-icon">🖼</span>
+          <span class="upload-label">Add a photo</span>
+        </div>
       </div>
-      <div class="role-body">
-        <p>
-          [Tell your origin story. Where were you born and raised? Did you grow up in one place or move around? What was your household like — big family, small family, any cultural background worth sharing?]
-        </p>
-        <p>
-          [What brought you to where you are now — San Jose, this career, this path? A sentence or two on the through-line from who you were growing up to who you are today.]
-        </p>
-      </div>
+      <p class="photo-note">Photos are preview-only. See instructions to make them permanent on GitHub.</p>
     </div>
 
-    <!-- EDUCATION BLOCK -->
-    <div class="role-block" style="margin-bottom: 1.5rem;">
-      <div class="role-header">
-        <div>
-          <div class="role-title">Education</div>
-          <div class="role-company">Schools &amp; what I studied</div>
+    <!-- KIOSK -->
+    <div class="project-block">
+      <div class="project-label-row">
+        <span class="project-num">02 ·</span>
+        <span class="project-name">HelpZone Kiosk</span>
+      </div>
+      <p class="project-desc">
+        The HelpZone Kiosk (HZK) serves as both an IT support solution and an employee self-service purchasing station for common IT accessories. Employees can reach a support advisor virtually with one touch of a button via [Company A]'s calling solution and technology. The kiosk also stocks common IT accessories such as mice, chargers, and cables, available to any employee who is away from their home office and needs something quickly, all with a swipe of their employee badge.
+      </p>
+      <div class="photo-pair">
+        <div class="photo-slot" title="Click to add photo">
+          <input type="file" accept="image/*" onchange="loadImage(event,this)" />
+          <span class="upload-icon">🖼</span>
+          <span class="upload-label">Add a photo</span>
+        </div>
+        <div class="photo-slot" title="Click to add photo">
+          <input type="file" accept="image/*" onchange="loadImage(event,this)" />
+          <span class="upload-icon">🖼</span>
+          <span class="upload-label">Add a photo</span>
         </div>
       </div>
-      <div class="role-body">
-        <p>
-          <strong>[University Name], [City]</strong> — [Degree], [Major / Field of Study], Class of [Year]. [One sentence on what you took from it — academically, socially, or personally. What do you remember most?]
-        </p>
-        <p>
-          <strong>[High School Name], [City]</strong> — [Graduated Year]. [Optional: anything notable — sports team, clubs, things that shaped you. Or delete this line entirely.]
-        </p>
-      </div>
-      <div class="pills">
-        <span class="pill">[Your major]</span>
-        <span class="pill">[Any clubs or activities]</span>
-        <span class="pill">[Anything else worth noting]</span>
+      <p class="photo-note">Photos are preview-only. See instructions to make them permanent on GitHub.</p>
+    </div>
+  </div>
+
+  <!-- ── MATH / THESIS ── -->
+  <div class="math-section" id="math">
+    <div class="math-inner">
+      <p class="section-label">Academic background</p>
+      <h2 class="section-title">Graduate work in <em>pure mathematics</em></h2>
+      <div class="math-grid">
+
+        <div class="math-body">
+          <p>
+            I didn't fully appreciate mathematics until I took AP Calculus in high school. There was something satisfying about how it pulled together everything I'd learned before, algebra, trigonometry, into one unified framework. That experience is what made me want to study math seriously.
+          </p>
+          <p>
+            College math is a different animal entirely. You stop solving with formulas and start solving with logic and writing. That shift toward rigor and abstraction changed how I think, and it's a skill that has stayed with me long after the coursework ended.
+          </p>
+          <p>
+            My real passion emerged when I stumbled into a Topology course and encountered Knot Theory, a field of mathematics dedicated to studying the kinds of knots you see in everyday life, and developing tools to mathematically distinguish one from another. I'd encourage anyone curious to look it up.
+          </p>
+          <p>
+            I went on to write my graduate thesis on Khovanov Homology, a method within Knot Theory. More than the subject itself, graduate research taught me how to sit with an open-ended problem that has no known answer, resist jumping to solutions before the question is fully understood, and verify rigorously that what I found was actually correct. That precision and patience follows me into every decision I make.
+          </p>
+        </div>
+
+        <div class="thesis-card" style="align-items: center; justify-content: center;">
+          <a href="YOUR_THESIS_LINK_HERE" class="thesis-link" target="_blank">
+            📄 Read the thesis
+          </a>
+        </div>
+
       </div>
     </div>
-
-    <!-- HOBBIES BLOCK -->
-    <div class="role-block">
-      <div class="role-header">
-        <div>
-          <div class="role-title">What I'm into</div>
-          <div class="role-company">Hobbies &amp; interests outside of work</div>
-        </div>
-      </div>
-      <div class="role-body">
-        <p>
-          [Describe your main hobbies here in your own words — not a list, just a natural paragraph or two. What do you actually spend your time doing? What are you passionate about outside of work?]
-        </p>
-        <p>
-          [Second hobby or interest. Try to show some range — something physical, something creative, something intellectual. The goal is for someone reading this to feel like they know you a little.]
-        </p>
-      </div>
-      <div class="pills">
-        <span class="pill">[Hobby 1]</span>
-        <span class="pill">[Hobby 2]</span>
-        <span class="pill">[Hobby 3]</span>
-        <span class="pill">[Hobby 4]</span>
-        <span class="pill">[Add more as needed]</span>
-      </div>
-    </div>
-
-  </section>
-
-  <hr class="section-divider" />
-
-  <section id="role">
-    <p class="section-label">Experience</p>
-    <h2 class="section-title">My time as a PM at<br />[Company Name]</h2>
-
-    <div class="role-block">
-      <div class="role-header">
-        <div>
-          <div class="role-title">[Your Title Here]</div>
-          <div class="role-company">[Company Name] · San Jose, CA</div>
-        </div>
-        <span class="role-date">[Start] – [End / Present]</span>
-      </div>
-      <div class="role-body">
-        <p>
-          Describe your overall role in 2–3 sentences. What was the team's mission? What did you own — roadmap, discovery, stakeholder alignment, launches? What was the scope?
-        </p>
-        <p>
-          A second paragraph on your working style or a theme across your time there. For example: <strong>you took ambiguous problems and built structure around them</strong> — from "we need a solution" to a defined problem statement, research, and a shipped feature.
-        </p>
-      </div>
-      <div class="pills">
-        <span class="pill">Product Discovery</span>
-        <span class="pill">Roadmap Planning</span>
-        <span class="pill">Stakeholder Management</span>
-        <span class="pill">Cross-functional Execution</span>
-        <span class="pill">User Research</span>
-        <span class="pill">Internal Tooling</span>
-      </div>
-    </div>
-  </section>
-
-  <hr class="section-divider" />
-
-  <section id="projects">
-    <p class="section-label">Projects</p>
-    <h2 class="section-title">What I shipped.</h2>
-
-    <!-- PROJECT 1: HWOC -->
-    <div class="project-card">
-      <div class="project-header">
-        <span class="project-tag">Project 01</span>
-        <div class="project-title">HWOC</div>
-        <div class="project-subtitle">[One sentence on what HWOC is — e.g. "An internal workflow operations console for field teams."]</div>
-      </div>
-
-      <div class="gallery-wrap">
-        <div class="photo-gallery two-col">
-          <div class="photo-slot" title="Click to add photo">
-            <input type="file" accept="image/*" onchange="loadImage(event,this)" />
-            <span class="upload-icon">🖼</span>
-            <span class="upload-label">Click to add a photo</span>
-          </div>
-          <div class="photo-slot" title="Click to add photo">
-            <input type="file" accept="image/*" onchange="loadImage(event,this)" />
-            <span class="upload-icon">🖼</span>
-            <span class="upload-label">Click to add a photo</span>
-          </div>
-          <div class="photo-slot" title="Click to add photo">
-            <input type="file" accept="image/*" onchange="loadImage(event,this)" />
-            <span class="upload-icon">🖼</span>
-            <span class="upload-label">Click to add a photo</span>
-          </div>
-          <div class="photo-slot" title="Click to add photo">
-            <input type="file" accept="image/*" onchange="loadImage(event,this)" />
-            <span class="upload-icon">🖼</span>
-            <span class="upload-label">Click to add a photo</span>
-          </div>
-        </div>
-        <div class="gallery-note">Note: Photos added here are for local preview only. To make them permanent, see instructions below.</div>
-      </div>
-
-      <div class="project-stats">
-        <div class="project-stat">
-          <div class="project-stat-num">[X]</div>
-          <div class="project-stat-label">Key metric</div>
-        </div>
-        <div class="project-stat">
-          <div class="project-stat-num">[Y]</div>
-          <div class="project-stat-label">Another metric</div>
-        </div>
-        <div class="project-stat">
-          <div class="project-stat-num">[Z]</div>
-          <div class="project-stat-label">Third metric</div>
-        </div>
-      </div>
-
-      <div class="project-body">
-        <p><strong>The problem:</strong> Describe what problem this project was solving. Who was affected, and what was the cost of not solving it?</p>
-        <p><strong>What I did:</strong> Your specific contributions — discovery, PRD writing, sprint planning, stakeholder management, defining success metrics, trade-off decisions.</p>
-        <p><strong>The outcome:</strong> What shipped? What changed for users or the business? Numbers are gold — time saved, error rate reduced, adoption %, etc.</p>
-        <div class="pills">
-          <span class="pill">PRD Writing</span>
-          <span class="pill">User Interviews</span>
-          <span class="pill">Add your tags</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROJECT 2: KIOSK -->
-    <div class="project-card">
-      <div class="project-header">
-        <span class="project-tag">Project 02</span>
-        <div class="project-title">Kiosk</div>
-        <div class="project-subtitle">[One sentence on what Kiosk is — e.g. "A self-service hardware kiosk for frontline employees."]</div>
-      </div>
-
-      <div class="gallery-wrap">
-        <div class="photo-gallery three-col">
-          <div class="photo-slot" title="Click to add photo">
-            <input type="file" accept="image/*" onchange="loadImage(event,this)" />
-            <span class="upload-icon">🖼</span>
-            <span class="upload-label">Click to add a photo</span>
-          </div>
-          <div class="photo-slot" title="Click to add photo">
-            <input type="file" accept="image/*" onchange="loadImage(event,this)" />
-            <span class="upload-icon">🖼</span>
-            <span class="upload-label">Click to add a photo</span>
-          </div>
-          <div class="photo-slot" title="Click to add photo">
-            <input type="file" accept="image/*" onchange="loadImage(event,this)" />
-            <span class="upload-icon">🖼</span>
-            <span class="upload-label">Click to add a photo</span>
-          </div>
-        </div>
-        <div class="gallery-note">Note: Photos added here are for local preview only. To make them permanent, see instructions below.</div>
-      </div>
-
-      <div class="project-stats">
-        <div class="project-stat">
-          <div class="project-stat-num">[X]</div>
-          <div class="project-stat-label">Key metric</div>
-        </div>
-        <div class="project-stat">
-          <div class="project-stat-num">[Y]</div>
-          <div class="project-stat-label">Another metric</div>
-        </div>
-        <div class="project-stat">
-          <div class="project-stat-num">[Z]</div>
-          <div class="project-stat-label">Third metric</div>
-        </div>
-      </div>
-
-      <div class="project-body">
-        <p><strong>The problem:</strong> What problem did Kiosk solve? Who were the users and what was their frustration before this existed?</p>
-        <p><strong>What I did:</strong> Research, design collaboration, technical scoping, launch coordination, iteration post-launch. What was uniquely hard about this one?</p>
-        <p><strong>The outcome:</strong> What did success look like? What are you most proud of from this project?</p>
-        <div class="pills">
-          <span class="pill">Hardware + Software</span>
-          <span class="pill">0 to 1</span>
-          <span class="pill">Add your tags</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="section-divider" />
-
-  <section id="contact">
-    <div class="contact-bar">
-      <div class="contact-bar-text">
-        <h3>Want to connect?</h3>
-        <p>Open to PM roles. Happy to chat about work, projects, or anything in between.</p>
-      </div>
-      <div class="contact-links">
-        <a href="mailto:YOUR@EMAIL.COM" class="contact-link">✉️ Email</a>
-        <a href="https://linkedin.com/in/YOURHANDLE" class="contact-link" target="_blank">💼 LinkedIn</a>
-        <a href="YOUR_RESUME_LINK" class="contact-link" target="_blank">📄 Résumé</a>
-      </div>
-    </div>
-  </section>
+  </div>
 
   <footer>
-    Jonathan · San Jose, CA · <a href="extracurriculars.html">See what I do outside of work →</a>
+    <a href="extracurriculars.html">See My Additional Passions</a>
   </footer>
 
   <script>
+    function loadHeroPhoto(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const wrap = document.querySelector('.hero-photo');
+        wrap.innerHTML = '';
+        wrap.style.border = '3px solid var(--clay)';
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        wrap.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    }
+
     function loadImage(event, input) {
       const file = event.target.files[0];
       if (!file) return;
@@ -749,6 +632,7 @@
       reader.onload = function(e) {
         const slot = input.closest('.photo-slot');
         slot.innerHTML = '';
+        slot.style.border = 'none';
         const img = document.createElement('img');
         img.src = e.target.result;
         slot.appendChild(img);
