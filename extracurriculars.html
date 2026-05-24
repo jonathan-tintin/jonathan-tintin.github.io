@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jonathan — Additional Passions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF8F3;
+      --warm-white: #FFFEF9;
+      --sand: #EDE8DF;
+      --clay: #C8B99A;
+      --terra: #9B6F4B;
+      --bark: #5C3D24;
+      --ink: #2A1F14;
+      --muted: #8C7D6D;
+      --accent: #B85C38;
+      --accent-light: #F5EDE8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 3rem;
+      background: rgba(250, 248, 243, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .nav-name {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--bark);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-pill {
+      font-size: 0.8rem !important;
+      font-weight: 600 !important;
+      padding: 0.4rem 1rem;
+      background: var(--sand);
+      color: var(--bark) !important;
+      border-radius: 2rem;
+      letter-spacing: 0.03em !important;
+      text-transform: none !important;
+      border: 1px solid var(--clay);
+      transition: background 0.2s !important;
+    }
+
+    .nav-pill:hover { background: var(--clay) !important; }
+
+    /* ── SHARED ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--sand);
+      margin: 0 3rem;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 5rem 3rem;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+      font-weight: 600;
+      color: var(--bark);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-title em { font-style: italic; color: var(--terra); }
+
+    .body-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .body-text p { margin-bottom: 1rem; }
+    .body-text p:last-child { margin-bottom: 0; }
+    .body-text strong { color: var(--bark); font-weight: 600; }
+
+    /* ── PHOTO SLOTS ── */
+    .photo-single {
+      margin-top: 1.8rem;
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--sand);
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      position: relative;
+      cursor: pointer;
+      border: 1.5px dashed var(--clay);
+      transition: background 0.15s;
+    }
+
+    .photo-single:hover { background: var(--accent-light); }
+
+    .photo-single img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+
+    .photo-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 1.8rem;
+    }
+
+    .photo-slot {
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--sand);
+      aspect-ratio: 4/3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      position: relative;
+      cursor: pointer;
+      border: 1.5px dashed var(--clay);
+      transition: background 0.15s;
+    }
+
+    .photo-slot:hover { background: var(--accent-light); }
+
+    .photo-slot img,
+    .photo-single img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+
+    .photo-slot input[type="file"],
+    .photo-single input[type="file"] {
+      position: absolute; inset: 0;
+      opacity: 0; cursor: pointer;
+      width: 100%; height: 100%;
+    }
+
+    .upload-icon { font-size: 1.3rem; opacity: 0.35; pointer-events: none; }
+    .upload-label {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-align: center;
+      padding: 0 1rem;
+      pointer-events: none;
+    }
+
+    /* ── STAT ROW ── */
+    .stat-row {
+      display: flex;
+      gap: 0;
+      margin-top: 1.8rem;
+      border: 1px solid var(--sand);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .stat-item {
+      flex: 1;
+      padding: 1.2rem 1rem;
+      text-align: center;
+      background: var(--warm-white);
+      border-right: 1px solid var(--sand);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: 'Lora', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--bark);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    /* ── TEACHING TIMELINE ── */
+    .teaching-timeline {
+      margin-top: 1.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .teaching-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 6px; bottom: 0;
+      width: 1px;
+      background: var(--sand);
+    }
+
+    .t-item {
+      position: relative;
+      margin-bottom: 1.6rem;
+    }
+
+    .t-item:last-child { margin-bottom: 0; }
+
+    .t-item::before {
+      content: '';
+      position: absolute;
+      left: -1.56rem;
+      top: 7px;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--clay);
+      border: 2px solid var(--cream);
+    }
+
+    .t-role {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--bark);
+      margin-bottom: 0.1rem;
+    }
+
+    .t-place {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--terra);
+      margin-bottom: 0.2rem;
+    }
+
+    .t-date {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2.5rem 3rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      border-top: 1px solid var(--sand);
+    }
+
+    footer a { color: var(--terra); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .container { padding: 3.5rem 1.5rem; }
+      .section-divider { margin: 0 1.5rem; }
+      .photo-pair { grid-template-columns: 1fr; }
+      .stat-row { flex-wrap: wrap; }
+      .stat-item { flex: 1 1 45%; border-bottom: 1px solid var(--sand); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-name">Jonathan</a>
+    <ul class="nav-links">
+      <li><a href="index.html">← Back</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── TEACHING ── -->
+  <div class="container" id="teaching" style="padding-top: 8rem;">
+    <p class="section-label">Passion 01</p>
+    <h2 class="section-title">Teaching <em>&amp; Tutoring</em></h2>
+
+    <div class="body-text">
+      <p>
+        I have a passion for helping others, and one of my favorite ways to do that is through teaching. It started in high school when I began tutoring at a <strong>Kumon center</strong>, and it's something I've carried with me ever since.
+      </p>
+      <p>
+        In college, I worked as an <strong>undergraduate math tutor at [University B]</strong> and also tutored online through Chegg. In graduate school at <strong>[University A]</strong>, I served as a Teaching Assistant for Calculus 1 and Calculus 2. Most recently, I taught Calculus as an <strong>adjunct professor at Foothill College</strong> — an experience that brought everything full circle.
+      </p>
+      <p>
+        There's something deeply satisfying about watching someone work through a problem they thought was impossible and come out the other side. That's what keeps me coming back to it.
+      </p>
+    </div>
+
+    <div class="teaching-timeline">
+      <div class="t-item">
+        <div class="t-role">Math Tutor</div>
+        <div class="t-place">Kumon Center</div>
+        <div class="t-date">High School</div>
+      </div>
+      <div class="t-item">
+        <div class="t-role">Undergraduate Math Tutor &amp; Chegg Tutor</div>
+        <div class="t-place">[University B] &amp; Chegg</div>
+        <div class="t-date">Undergraduate</div>
+      </div>
+      <div class="t-item">
+        <div class="t-role">Teaching Assistant, Calculus 1 &amp; 2</div>
+        <div class="t-place">[University A]</div>
+        <div class="t-date">Graduate School</div>
+      </div>
+      <div class="t-item">
+        <div class="t-role">Adjunct Professor, Calculus</div>
+        <div class="t-place">Foothill College</div>
+        <div class="t-date">Part-time</div>
+      </div>
+    </div>
+
+    <div class="photo-single" title="Click to add photo">
+      <input type="file" accept="image/*" onchange="loadSingle(event, this)" />
+      <span class="upload-icon">🖼</span>
+      <span class="upload-label">Add a photo</span>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- ── FITNESS / SEAL ── -->
+  <div class="container" id="fitness">
+    <p class="section-label">Passion 02</p>
+    <h2 class="section-title">Fitness <em>&amp; The Warrior Mindset</em></h2>
+
+    <div class="body-text">
+      <p>
+        In 2020, I joined the <strong>Navy Warrior Challenge Program</strong>, a program designed for those pursuing a Navy special operations rate — SEAL, SWCC, EOD, or AIRR — as well as those on the SEAL Officer route. We trained through 2022, including through the height of COVID. We were mentored directly by a retired Navy SEAL.
+      </p>
+      <p>
+        I pursued the SEAL Officer route because I wanted to be in a leadership role that was part of something bigger than myself, something genuinely challenging and far outside my comfort zone. I was eventually <strong>accepted to attend SEAL Officer Assessment and Selection (SOAS)</strong>. At the same time, I had just started my new role at [Company A], and I made the decision to focus on my career instead.
+      </p>
+      <p>
+        That chapter is behind me, but the discipline it built is not. I still train seriously and take my fitness as seriously as any professional commitment.
+      </p>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-item">
+        <div class="stat-num">53</div>
+        <div class="stat-label">VO2 max (ml/kg/min)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">35 mi</div>
+        <div class="stat-label">Current weekly mileage</div>
+      </div>
+    </div>
+
+    <div class="photo-single" title="Click to add photo">
+      <input type="file" accept="image/*" onchange="loadSingle(event, this)" />
+      <span class="upload-icon">🖼</span>
+      <span class="upload-label">Add a photo</span>
+    </div>
+
+    <div class="photo-single" style="margin-top: 10px;" title="Click to add photo">
+      <input type="file" accept="image/*" onchange="loadSingle(event, this)" />
+      <span class="upload-icon">🖼</span>
+      <span class="upload-label">Add a photo</span>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- ── CREDIT CARDS ── -->
+  <div class="container" id="creditcards">
+    <p class="section-label">Passion 03</p>
+    <h2 class="section-title">Personal Finance <em>&amp; Travel Cards</em></h2>
+
+    <div class="body-text">
+      <p>
+        One of my more niche but deeply enjoyable hobbies is the world of <strong>travel credit cards and points optimization</strong>. I stay up to date on card benefits, sign-on bonuses, point valuations, and redemption strategies the way some people follow sports. It's part personal finance, part puzzle.
+      </p>
+      <p>
+        My portfolio spans <strong>19 cards</strong> across six banks, broken into three categories: premium travel cards like the <strong>Amex Platinum</strong>, hotel co-branded cards like the <strong>Chase Ritz-Carlton card</strong>, and airline co-branded cards like the <strong>Chase United Quest card</strong>. Each card has a job, and I make sure it's doing it.
+      </p>
+      <p>
+        On the redemption side, I focus on two things: <strong>business and first class international flights</strong> using transferable points, and <strong>free night awards</strong> from hotel co-branded cards to keep travel costs down. The goal is never to spend more — it's to get significantly more value out of what I'm already spending.
+      </p>
+    </div>
+
+    <!-- BANK BREAKDOWN -->
+    <div style="margin-top: 1.8rem; background: var(--warm-white); border: 1px solid var(--sand); border-radius: 14px; overflow: hidden;">
+      <div style="padding: 1rem 1.4rem; border-bottom: 1px solid var(--sand);">
+        <span style="font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);">Cards by bank</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;">
+        <div style="padding: 1rem 1.4rem; border-right: 1px solid var(--sand); border-bottom: 1px solid var(--sand);">
+          <div style="font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 600; color: var(--bark);">7</div>
+          <div style="font-size: 0.78rem; color: var(--muted);">Chase</div>
+        </div>
+        <div style="padding: 1rem 1.4rem; border-right: 1px solid var(--sand); border-bottom: 1px solid var(--sand);">
+          <div style="font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 600; color: var(--bark);">6</div>
+          <div style="font-size: 0.78rem; color: var(--muted);">Amex</div>
+        </div>
+        <div style="padding: 1rem 1.4rem; border-bottom: 1px solid var(--sand);">
+          <div style="font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 600; color: var(--bark);">2</div>
+          <div style="font-size: 0.78rem; color: var(--muted);">Citi</div>
+        </div>
+        <div style="padding: 1rem 1.4rem; border-right: 1px solid var(--sand); border-bottom: 1px solid var(--sand);">
+          <div style="font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 600; color: var(--bark);">2</div>
+          <div style="font-size: 0.78rem; color: var(--muted);">Barclays</div>
+        </div>
+        <div style="padding: 1rem 1.4rem; border-right: 1px solid var(--sand); border-bottom: 1px solid var(--sand);">
+          <div style="font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 600; color: var(--bark);">1</div>
+          <div style="font-size: 0.78rem; color: var(--muted);">Bank of America</div>
+        </div>
+        <div style="padding: 1rem 1.4rem; border-bottom: 1px solid var(--sand);">
+          <div style="font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 600; color: var(--bark);">1</div>
+          <div style="font-size: 0.78rem; color: var(--muted);">Wells Fargo</div>
+        </div>
+        <div style="padding: 1rem 1.4rem; grid-column: 1 / -1; background: var(--cream); display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);">Total</span>
+          <span style="font-family: 'Lora', serif; font-size: 1.3rem; font-weight: 600; color: var(--bark);">19 cards</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <a href="index.html">← Back to main page</a>
+  </footer>
+
+  <script>
+    function loadSingle(event, input) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const wrap = input.closest('.photo-single');
+        wrap.innerHTML = '';
+        wrap.style.border = 'none';
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        wrap.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function loadSlot(event, input) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const slot = input.closest('.photo-slot');
+        slot.innerHTML = '';
+        slot.style.border = 'none';
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        slot.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
+
+</body>
+</html>
